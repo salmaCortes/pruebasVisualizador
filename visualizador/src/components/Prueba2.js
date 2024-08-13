@@ -15,7 +15,7 @@ export default function Prueba1() {
             [
                 //prueba 1 pdf
                 {
-                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/77235568d26a29d44d030a629097cca997d6ba6c/Tesis_Alma.pdf",
+                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/master/Tesis_Alma.pdf",
                     fileType: "pdf"
                     
 
@@ -35,7 +35,7 @@ export default function Prueba1() {
                 //prueba 2 docx - word  //funciona con  archivo en la nube
             
                 {
-                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/153122ba49c51837d92f5d90c69918c2003095e6/prueba1.docx",
+                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/master/prueba1.docx",
                     fileType: "docx"
                 
             
@@ -54,7 +54,7 @@ export default function Prueba1() {
                 //prueba 2 archivos txt guardados de forma local
                 //si funciona con archivos txt guardados en la nube
                 {
-                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/5a8da181870251dbc2751b538af8e59680619106/hola.txt",
+                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/master/hola.txt",
                     fileType: "txt"
                 
 
@@ -64,7 +64,7 @@ export default function Prueba1() {
                 {
                     //si funciona con una url en la nube
                     //prueba 2 documento de powerpoint
-                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/a4d0537dfca3cb5ff22bcd05aea7dd53bf369884/AC.pptx",
+                    uri: "https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/master/AC.pptx",
                     fileType: "pptx"
                 
 
@@ -74,7 +74,7 @@ export default function Prueba1() {
                 //prueba 2 archivo de excel
                 //si funciona con archivos en la nube
                 {
-                    uri:"https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/a4d0537dfca3cb5ff22bcd05aea7dd53bf369884/dataset_sectorTerciario.xlsx",
+                    uri:"https://raw.githubusercontent.com/salmaCortes/pruebasVisualizador/master/dataset_sectorTerciario.xlsx",
                     fileType: "xlsx"
 
                 },
