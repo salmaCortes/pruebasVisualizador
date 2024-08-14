@@ -1,6 +1,7 @@
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 import React from 'react'
+//Código 2 para poner a prueba la librería "@cyntler/react-doc-viewer"
 
 export default function Prueba1() {
 
@@ -83,7 +84,7 @@ export default function Prueba1() {
         }
    
 
-        style={{height:1000}}
+        style={{height:800}}
         theme={{
         primary: "#5296d8",
         secondary: "#ffffff",
