@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import React from 'react'
 
+//Código 1 para poner a prueba la librería "@cyntler/react-doc-viewer"
 export default function Prueba1() {
 
   const documentos =[
