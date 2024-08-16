@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Prueba2() {
     const bucket = 'holis';
-    const file = 'k.png';
+    const file = 'mostrar_informe.pdf';
    
 
     return (
