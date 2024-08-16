@@ -2,9 +2,9 @@ import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import React from 'react';
 
 export default function Prueba2() {
-    // Puedes cambiar la URL según el tipo de archivo que quieras visualizar
-    const nombreDoc ="deathnote.jpg";
-    const documentUrl = `https://s3.us-central-1.wasabisys.com/front/${nombreDoc}`;
+    const bucket = 'holis';
+    const file = 'k.png';
+   
 
     return (
         <div>
@@ -13,7 +13,7 @@ export default function Prueba2() {
                 pluginRenderers={DocViewerRenderers}
                 documents={[
                     {
-                        uri: `http://localhost:3001/get-file?url=${documentUrl}`,  
+                        uri: `http://localhost:3001/obtener-archivo?bucket=${bucket}&file=${file}`,  
                     }
                 ]}
                 style={{ height: 800 }}
