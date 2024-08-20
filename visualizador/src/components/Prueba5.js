@@ -1,9 +1,9 @@
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import React from 'react';
 
-export default function Prueba2() {
+export default function Prueba5() {
     const bucket = 'holis';
-    const file = 'mostrar_informe.pdf';
+    const file = 'prueba1.docx';
    
 
     return (

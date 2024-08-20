@@ -3,7 +3,7 @@ import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 import React from 'react'
 
 //Código 1 para poner a prueba la librería "react-doc-viewer"
-export default function Prueba1() {
+export default function Prueba4() {
 
     const documentos =[
     

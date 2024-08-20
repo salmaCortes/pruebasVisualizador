@@ -58,19 +58,6 @@ app.get('/obtener-archivo', async (req, res) => {
     const fileType = path.extname(file); 
 
     try {
-        // Realiza la solicitud preflight CORS con los parámetros proporcionados
-        await checkCors(bucket, file);
-
-        // Obtener la URL prefirmada con los parámetros proporcionados
-        const signedUrl = await getSignedUrl(bucket, file);
-
-        const response = await axios.get(signedUrl, {
-            headers: {
-                'Content-Type': 'application/pdf'
-            },
-            responseType: 'arraybuffer'
-        });
-
         const contentTypeMap = {
             '.pdf': 'application/pdf',
             '.doc': 'application/msword',
@@ -84,6 +71,22 @@ app.get('/obtener-archivo', async (req, res) => {
             '.png':'image/png'
         };
         const contentType = contentTypeMap[fileType] || 'application/octet-stream';
+
+        
+        // Realiza la solicitud preflight CORS con los parámetros proporcionados
+        await checkCors(bucket, file);
+
+        // Obtener la URL prefirmada con los parámetros proporcionados
+        const signedUrl = await getSignedUrl(bucket, file);
+
+        const response = await axios.get(signedUrl, {
+            headers: {
+                'Content-Type': contentType
+            },
+            responseType: 'arraybuffer'
+        });
+
+        
 
         res.setHeader('Content-Type', contentType);
         res.send(response.data);
