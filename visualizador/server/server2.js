@@ -18,6 +18,12 @@ app.post('/convertir', async (req, res) => {
     }
 
     try {
+        // Asegúrate de que la carpeta uploads exista
+        const uploadsDir = path.join(__dirname, 'uploads');
+        if (!fs.existsSync(uploadsDir)) {
+            fs.mkdirSync(uploadsDir, { recursive: true });
+        }
+
         // Descarga el archivo desde la URL
         const response = await axios({
             url: fileUrl,
@@ -25,14 +31,14 @@ app.post('/convertir', async (req, res) => {
         });
 
         // Guarda el archivo en el servidor
-        const inputFile = path.join('uploads', `tempfile.${fileExtension}`);
+        const inputFile = path.join(uploadsDir, `tempfile.${fileExtension}`);
         fs.writeFileSync(inputFile, response.data);
 
         const outputFile = `tempfile.pdf`;
-        const outputFilePath = path.join('uploads', outputFile);
+        const outputFilePath = path.join(uploadsDir, outputFile);
 
         // Convierte el archivo a PDF usando LibreOffice
-        exec(`libreoffice --headless --convert-to pdf "${inputFile}" --outdir "${path.dirname(inputFile)}"`, (error) => {
+        exec(`libreoffice --headless --convert-to pdf "${inputFile}" --outdir "${uploadsDir}"`, (error) => {
             if (error) {
                 console.error(`Error al convertir: ${error.message}`);
                 return res.status(500).send('Error en la conversión');

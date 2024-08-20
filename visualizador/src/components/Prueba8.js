@@ -7,7 +7,7 @@ import AWS from 'aws-sdk';
 
 export default function Prueba6() {
     const bucket = 'holis';
-    const file = 'bd1.csv'; 
+    const file = 'holis.odt'; 
     const [fileUrl, setFileUrl] = useState(null);
     const [excelData, setExcelData] = useState([]);
     const [sheetNames, setSheetNames] = useState([]);
