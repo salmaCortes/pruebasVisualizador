@@ -15,6 +15,7 @@ export default function Prueba6() {
     const [workbook, setWorkbook] = useState(null);
 
     useEffect(() => {
+       
         const s3 = new AWS.S3({
             accessKeyId: '24XG5L9P2ZNBRLBEUYOS',
             secretAccessKey: 'XS8OIvTyXlZk18NBDniayFpQkb6JwDZuWAoOr3DF',
@@ -32,9 +33,24 @@ export default function Prueba6() {
         };
 
         const obtenerArchivo = async (bucket, file) => {
+            const fileType = file.split('.').pop().toLowerCase();
             try {
                 const signedUrl = await getSignedUrl(bucket, file);
                 const fileExtension = file.split('.').pop().toLowerCase();
+
+                const contentTypeMap = {
+                    doc: 'application/msword',
+                    docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    ppt: 'application/vnd.ms-powerpoint',
+                    pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                    xls: 'application/vnd.ms-excel',
+                    xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                    txt: 'text/plain',
+                    jpg: 'image/jpg',
+                    png: 'image/png',
+                };
+
+                const contentType = contentTypeMap[fileType] || 'application/octet-stream';
 
                 // Mapea los tipos de archivos y su manejo
                 if (['xlsx', 'xls', 'csv'].includes(fileExtension)) {
@@ -54,9 +70,15 @@ export default function Prueba6() {
                         fileExtension: fileExtension
                     });
                     setFileUrl(pdfResponse.data.pdfUrl);
-                } else if (['pdf', 'jpg', 'png'].includes(fileExtension)) {
-                    // Manejo para archivos PDF, imágenes y otros tipos específicos
-                    setFileUrl(signedUrl);
+
+                } else if (['jpg', 'png', 'txt'].includes(fileType)) {
+                    const response = await axios.get(signedUrl, {
+                        headers: { 'Content-Type': contentType },
+                        responseType: 'arraybuffer'
+                    });
+                    const blob = new Blob([response.data], { type: contentType });
+                    const url = window.URL.createObjectURL(blob);
+                    setFileUrl(url);
                 } else {
                     // Manejo para tipos de archivos no especificados
                     console.warn(`Tipo de archivo no soportado: ${fileExtension}`);
