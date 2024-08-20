@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 
 export default function Prueba5() {
     const bucket = 'holis';
-    const file = 'prueba1.docx';
+    const file = 'c.xlsx';
     const [fileUrl, setFileUrl] = useState(null);
     const [excelData, setExcelData] = useState([]);
     const [sheetNames, setSheetNames] = useState([]);
