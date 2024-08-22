@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 
 export default function Prueba5() {
     const bucket = 'holis';
-    const file = 'c.xlsx';
+    const file = 'prueba1.docx';
     const [fileUrl, setFileUrl] = useState(null);
     const [excelData, setExcelData] = useState([]);
     const [sheetNames, setSheetNames] = useState([]);
@@ -73,6 +73,23 @@ export default function Prueba5() {
                             fileExtension: fileExtension
                         });
                         setFileUrl(pdfResponse.data.pdfUrl);
+                        /*
+                        const pdfResponse = await axios.post('http://localhost:3001/convertir-archivo', {
+                            fileUrl: signedUrl,
+                            fileExtension: fileExtension
+                        });
+                        setFileUrl(pdfResponse.data.pdfUrl);
+                        */
+                       /*
+                       
+                        const response = await axios.get(signedUrl, {
+                            headers: { 'Content-Type': contentType },
+                            responseType: 'arraybuffer'
+                        });
+                        const blob = new Blob([response.data], { type: contentType });
+                        const url = window.URL.createObjectURL(blob);
+                        setFileUrl(url);
+                        */
                     } else if (['jpg', 'png', 'txt'].includes(fileType)) {
                         const response = await axios.get(signedUrl, {
                             headers: { 'Content-Type': contentType },
@@ -154,6 +171,8 @@ export default function Prueba5() {
                 </div>
             ) : (
                 fileUrl && !isPDF && (
+
+                    
                     <DocViewer
                         pluginRenderers={DocViewerRenderers}
                         documents={[{ uri: fileUrl }]}
@@ -170,6 +189,31 @@ export default function Prueba5() {
                     />
                 )
             )}
+            {/*
+
+                 
+                    <iframe
+                         src={`https://docs.google.com/viewer?url=${encodeURIComponent(fileUrl)}&embedded=true`}
+                        width="1366px"
+                        height="623px"
+                        frameBorder="0"
+                  ></iframe>
+                  <DocViewer
+                        pluginRenderers={DocViewerRenderers}
+                        documents={[{ uri: fileUrl }]}
+                        style={{ height: 800 }}
+                        theme={{
+                            primary: "#5296d8",
+                            secondary: "#ffffff",
+                            tertiary: "#5296d899",
+                            text_primary: "#ffffff",
+                            text_secondary: "#5296d8",
+                            text_tertiary: "#00000099",
+                            disableThemeScrollbar: false,
+                        }}
+                    />
+            
+            */}
 
             {isPDF && (
                 <DocViewer

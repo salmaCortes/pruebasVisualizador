@@ -65,11 +65,7 @@ export default function Prueba6() {
                     const jsonData = XLSX.utils.sheet_to_json(worksheet);
                     setExcelData(jsonData);
                 } else if (['doc', 'docx', 'ppt', 'pptx', 'odt'].includes(fileExtension)) {
-                    const pdfResponse = await axios.post('http://localhost:8000/convertir', {
-                        fileUrl: signedUrl,
-                        fileExtension: fileExtension
-                    });
-                    setFileUrl(pdfResponse.data.pdfUrl);
+                    setFileUrl(signedUrl);
 
                 } else if (['jpg', 'png', 'txt'].includes(fileType)) {
                     const response = await axios.get(signedUrl, {
