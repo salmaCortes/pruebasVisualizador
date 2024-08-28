@@ -1,12 +1,12 @@
 import './App.css';
 
-import Prueba4 from "./components/Prueba4";
+import Prueba14 from "./components/Prueba14";
 
 function App() {
   return (
     <div className="App">
  
-    <Prueba4/>
+    <Prueba14/>
     
     
  
