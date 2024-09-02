@@ -79,13 +79,18 @@ export default function Prueba18() {
   return (
     <div>
       <h1>Prueba Docs</h1>
-      <input
-        type="text"
-        value={fileName}
-        onChange={(e) => setFileName(e.target.value)}
-        placeholder="Ingrese el nombre del archivo"
-      />
-      <button onClick={handleClearFileName}>Borrar nombre del archivo</button>
+        <div className="container-fluid">
+                
+          <div className="col-9 d-flex align-items-center">
+            <input
+              type="text"
+              value={fileName}
+              onChange={(e) => setFileName(e.target.value)}
+              placeholder="Ingrese el nombre del archivo"
+            />
+            <button onClick={handleClearFileName}>Borrar nombre del archivo</button>
+          </div>
+        </div>
 
       {sheetNames.length > 0 && (
         <div className="sheet-selector">

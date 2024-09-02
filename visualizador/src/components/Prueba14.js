@@ -3,54 +3,53 @@ import "@cyntler/react-doc-viewer/dist/index.css";
 import React, { useEffect, useState } from 'react';
 
 export default function Prueba14() {
-  
   const [fileName, setFileName] = useState(""); 
-  const [documentNormal, setDocumentNormal] = useState(null);
- 
+  const [documentNormal, setDocumentNormal] = useState("");
+
   useEffect(() => {
     const fetchDocument = async () => {
-      const url = `http://192.168.1.87:8081/${fileName}`;
-      setDocumentNormal(url);
-      
+      try {
+        const url = `http://192.168.1.87:8081/${fileName}`;
+        setDocumentNormal(url);
+      } catch (error) {
+        console.error("Error al obtener el documento:", error);
+      }
     };
 
     if (fileName) {
       fetchDocument();
     }
-
-   
   }, [fileName]);
 
   const handleClearFileName = () => {
     setFileName("");
-    
+    setDocumentNormal(""); 
   };
-
- 
 
   return (
     <div>
       <h1>Prueba Docs</h1>
-      <input
-        type="text"
-        value={fileName}
-        onChange={(e) => setFileName(e.target.value)}
-        placeholder="Ingrese el nombre del archivo"
-      />
-      <button onClick={handleClearFileName}>Borrar nombre del archivo</button>
-
-      
-
-      
+      <div className="container-fluid">
+        <div className="col-9 d-flex align-items-center">
+          <input
+            type="text"
+            value={fileName}
+            onChange={(e) => setFileName(e.target.value)}
+            placeholder="Ingrese el nombre del archivo"
+          />
+          <button onClick={handleClearFileName}>Borrar nombre del archivo</button>
+        </div>
+      </div>
+      {documentNormal && (
         <DocViewer
           pluginRenderers={DocViewerRenderers}
           documents={[
             {
-              uri:documentNormal ,
-              fileName: fileName
+              uri: documentNormal,
+              fileName: fileName,
             },
           ]}
-          style={{ height: 800 }}
+          style={{ height: '800px', width: '100%' }} // Ajusta el ancho para que ocupe el 100% del contenedor
           theme={{
             primary: "#5296d8",
             secondary: "#ffffff",
@@ -61,7 +60,9 @@ export default function Prueba14() {
             disableThemeScrollbar: false,
           }}
         />
-     
+      )}
     </div>
   );
+
+
 }

@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // Importar el middleware CORS
+const cors = require('cors'); 
 const axios = require('axios');
 const libre = require('libreoffice-convert');
 const { promisify } = require('util');
@@ -19,7 +19,7 @@ app.get('/convert', async (req, res) => {
         }
         
       
-        const docUrl = `http://localhost:8081/${fileName}`; // URL del documento a convertir
+        const docUrl = `http://localhost:8081/${fileName}`; 
         const ext = '.pdf';
 
         // Descargar el archivo desde la URL
