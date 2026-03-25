@@ -26,8 +26,8 @@ app.post('/convertir', async (req, res) => {
         if (fileExtension === 'pdf') {
             // Configuración del cliente S3 de Wasabi
             const s3 = new AWS.S3({
-                accessKeyId: '24XG5L9P2ZNBRLBEUYOS', // Access Key de Wasabi
-                secretAccessKey: 'XS8OIvTyXlZk18NBDniayFpQkb6JwDZuWAoOr3DF', //  Secret Key de Wasabi
+                accessKeyId: '', // Access Key de Wasabi
+                secretAccessKey: '', //  Secret Key de Wasabi
                 endpoint: 'https://s3.us-central-1.wasabisys.com', // Endpoint específico de Wasabi
                 region: 'us-central-1', // Región correspondiente
                 signatureVersion: 'v4'
